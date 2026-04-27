@@ -33,6 +33,12 @@ export default async function handler(req, res) {
     if (ct.includes('application/json')) {
       const data = await upstreamRes.json();
       return res.status(upstreamRes.status).json(data);
+    } else if (!upstreamRes.ok) {
+      // Upstream error tapi balikin HTML (misalnya 502/503/404 page)
+      return res.status(upstreamRes.status).json({
+        status: false,
+        message: `Upstream error: ${upstreamRes.status} ${upstreamRes.statusText}`
+      });
     } else {
       const buf = await upstreamRes.arrayBuffer();
       res.setHeader('Content-Type', ct);

@@ -4,6 +4,13 @@ const API = (endpoint, params = {}) => {
   return `/api/proxy?${qs}`;
 };
 
+// ===== SAFE JSON PARSE =====
+async function safeJson(res) {
+  const text = await res.text();
+  try { return JSON.parse(text); }
+  catch { throw new Error('API tidak merespons dengan benar. Coba lagi nanti.'); }
+}
+
 // ===== CARD TOGGLE =====
 function toggleCard(id) {
   document.getElementById(id).classList.toggle('open');
@@ -83,7 +90,7 @@ async function downloadMP4() {
   setLoading('mp4-result');
   try {
     const res = await fetch(API('aio', { url }));
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data || data.status === false) throw new Error(data?.message || 'Gagal');
     renderLinks('mp4-result', extractLinks(data, 'mp4'));
   } catch(e) { setError('mp4-result', e.message); }
@@ -95,7 +102,7 @@ async function downloadMP3() {
   setLoading('mp3-result');
   try {
     const res = await fetch(API('aio', { url }));
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data || data.status === false) throw new Error(data?.message || 'Gagal');
     renderLinks('mp3-result', extractLinks(data, 'mp3'));
   } catch(e) { setError('mp3-result', e.message); }
@@ -107,7 +114,7 @@ async function downloadHDPhoto() {
   setLoading('hdphoto-result');
   try {
     const res = await fetch(API('hdv4', { url }));
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data || data.status === false) throw new Error(data?.message || 'Gagal');
     renderLinks('hdphoto-result', extractLinks(data, 'photo'));
   } catch(e) { setError('hdphoto-result', e.message); }
@@ -120,7 +127,7 @@ async function downloadHDVideo() {
   setLoading('hdvideo-result');
   try {
     const res = await fetch(API('hdv4', { url, fps }));
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data || data.status === false) throw new Error(data?.message || 'Gagal');
     renderLinks('hdvideo-result', extractLinks(data, 'video'));
   } catch(e) { setError('hdvideo-result', e.message); }
@@ -139,7 +146,7 @@ async function removeBackground(input) {
       headers: { 'Accept': 'application/json' },
       body: formData
     });
-    const data = await res.json();
+    const data = await safeJson(res);
     const imgUrl = data?.result_url || data?.url || data?.image;
     if (!imgUrl) throw new Error('Tidak ada hasil');
     document.getElementById('rmbg-result').innerHTML =
@@ -155,7 +162,7 @@ async function tiktokStalk() {
   setLoading('ttstalk-result');
   try {
     const res = await fetch(API('tiktokstalk', { username: user }));
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data || data.status === false) throw new Error(data?.message || 'Gagal');
     const d = data.result || data.data || data;
     const avatar = d.avatar || d.profilePic || d.avatarThumb || '';
@@ -228,7 +235,7 @@ async function transformImage(input) {
     const formData = new FormData();
     formData.append('image', file);
     const res = await fetch(`/api/proxy?endpoint=${ep}`, { method: 'POST', body: formData });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data || data.status === false) throw new Error(data?.message || 'Gagal');
     const imgUrl = data?.result?.url || data?.result || data?.url || data?.image || data?.data?.url;
     if (!imgUrl) throw new Error('Tidak ada hasil gambar');
@@ -245,7 +252,7 @@ async function generateIQC() {
   setLoading('iqc-result');
   try {
     const res = await fetch(API('iqcv2', { name }));
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data || data.status === false) throw new Error(data?.message || 'Gagal');
     const imgUrl = data?.result?.url || data?.result || data?.url || data?.image || data?.data;
     if (imgUrl && typeof imgUrl === 'string' && imgUrl.startsWith('http')) {
@@ -271,7 +278,7 @@ async function generateTTS() {
   setLoading('tts-result');
   try {
     const res = await fetch(API('tts-lengkap', { text, lang }));
-    const data = await res.json();
+    const data = await safeJson(res);
     if (!data || data.status === false) throw new Error(data?.message || 'Gagal');
     const audioUrl = data?.result?.url || data?.result || data?.url || data?.audio || data?.data;
     if (audioUrl && typeof audioUrl === 'string' && audioUrl.startsWith('http')) {
