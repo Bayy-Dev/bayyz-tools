@@ -1,81 +1,1780 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BAYYZ TOOLS — Kumpulan Tools Gratis</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAYYZ TOOLS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f5f2;
+  --surface: #ffffff;
+  --surface2: #f0ede8;
+  --border: #e2ddd7;
+  --text: #1a1714;
+  --text-2: #6b6560;
+  --text-3: #a09890;
+  --accent: #2c2420;
+  --accent-warm: #8b5e3c;
+  --accent-soft: #d4c4b0;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.1);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+.logo-mark {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+.logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+nav { display: flex; gap: 4px; }
+nav a {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .15s;
+}
+nav a:hover, nav a.active { background: var(--surface2); color: var(--text); }
+
+/* HERO */
+.hero {
+  max-width: 1100px;
+  margin: 48px auto 0;
+  padding: 0 24px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  margin-bottom: 16px;
+}
+.hero-label::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--accent-warm);
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.hero h1 em { font-style: italic; color: var(--accent-warm); }
+.hero p {
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.hero-stats {
+  display: flex;
+  gap: 24px;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: 'Playfair Display', serif;
+}
+.stat-label { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 1px; }
+
+.hero-visual {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+}
+.tool-preview-list { display: flex; flex-direction: column; gap: 10px; }
+.tool-preview-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  transition: all .2s;
+  cursor: pointer;
+}
+.tool-preview-item:hover { background: var(--surface2); color: var(--text); }
+.tool-preview-item .icon { font-size: 18px; width: 32px; text-align: center; }
+
+/* MAIN LAYOUT */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* CATEGORY TABS */
+.cat-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.cat-tab {
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all .15s;
+  display: flex; align-items: center; gap: 6px;
+}
+.cat-tab:hover { border-color: var(--accent-soft); color: var(--text); }
+.cat-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* TOOL GRID */
+.tools-section { display: none; }
+.tools-section.visible { display: block; }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.section-desc { color: var(--text-2); font-size: 13px; margin-bottom: 24px; }
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* TOOL CARD */
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: all .2s;
+}
+.tool-card:hover {
+  border-color: var(--accent-soft);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+.tool-card-header {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 14px;
+}
+.tool-icon {
+  width: 40px; height: 40px;
+  background: var(--surface2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.tool-info h3 {
+  font-size: 14px; font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.tool-info p {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.4;
+}
+
+/* FORM ELEMENTS */
+.tool-input-wrap {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.tool-input, .tool-select, .tool-textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color .15s;
+}
+.tool-input:focus, .tool-select:focus, .tool-textarea:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+.tool-textarea { resize: vertical; min-height: 80px; }
+.tool-select { cursor: pointer; }
+
+.file-drop {
+  border: 1.5px dashed var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .15s;
+  background: var(--bg);
+  position: relative;
+}
+.file-drop:hover, .file-drop.dragover { border-color: var(--accent); background: var(--surface2); }
+.file-drop input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.file-drop-label { font-size: 12px; color: var(--text-3); }
+.file-drop-label strong { color: var(--text-2); }
+
+.btn {
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  border: none;
+  display: inline-flex; align-items: center; gap: 6px;
+  width: 100%;
+  justify-content: center;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: #3d342f; }
+.btn-primary:active { transform: scale(.98); }
+.btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+
+/* RESULT */
+.tool-result {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: none;
+}
+.tool-result.show { display: block; }
+.tool-result.success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.tool-result.error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+.tool-result.info { background: var(--surface2); border: 1px solid var(--border); color: var(--text); }
+.result-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.result-link {
+  padding: 6px 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.result-link:hover { background: #3d342f; }
+.result-img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 8px;
+  display: block;
+}
+.result-text { white-space: pre-wrap; word-break: break-word; font-size: 12px; }
+
+/* Loading spinner */
+.spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* PROFILE CARD */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+.profile-row { display: flex; justify-content: space-between; }
+.profile-label { color: var(--text-3); }
+.profile-val { font-weight: 600; color: var(--text); text-align: right; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 12px;
+}
+footer a { color: var(--text-2); text-decoration: none; }
+footer a:hover { color: var(--text); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .tool-grid { grid-template-columns: 1fr; }
+  nav { display: none; }
+}
+
+/* Animate in */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.tools-section.visible { animation: fadeUp .25s ease; }
+</style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <span class="logo-badge">BY</span>
-        <span class="logo-name">BAYYZ<span>TOOLS</span></span>
-      </a>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#" onclick="showSection('home')">
+      <div class="logo-mark">B</div>
+      <span class="logo-text">Bayyz Tools</span>
+    </a>
+    <nav>
+      <a onclick="showSection('download')" id="nav-download">Download</a>
+      <a onclick="showSection('ai')" id="nav-ai">AI Tools</a>
+      <a onclick="showSection('search')" id="nav-search">Search</a>
+      <a onclick="showSection('stalker')" id="nav-stalker">Stalker</a>
+      <a onclick="showSection('tools')" id="nav-tools">Utilities</a>
+      <a onclick="showSection('primbon')" id="nav-primbon">Primbon</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME -->
+<div id="sec-home">
+  <div class="hero">
+    <div>
+      <div class="hero-label">All-in-one toolkit</div>
+      <h1>Tools serba bisa<br>dalam satu <em>tempat.</em></h1>
+      <p>Download video, cek info akun, AI tools, primbon dan banyak lagi — gratis, langsung di browser.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">30+</div>
+          <div class="stat-label">Tools</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Kategori</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Gratis</div>
+        </div>
+      </div>
     </div>
-  </header>
-
-  <main class="main">
-    <div class="page-hero fade-in">
-      <div class="page-hero-tag">✦ All Tools</div>
-      <h1>Semua tools <span class="grad">gratis</span><br/>dalam satu tempat.</h1>
-      <p>Pilih kategori yang kamu butuhkan di bawah ini.</p>
+    <div class="hero-visual">
+      <div class="tool-preview-list">
+        <div class="tool-preview-item" onclick="showSection('download')">
+          <span class="icon">⬇️</span> YouTube & TikTok Downloader
+        </div>
+        <div class="tool-preview-item" onclick="showSection('ai')">
+          <span class="icon">🎨</span> AI Image Tools (Remove BG, HD)
+        </div>
+        <div class="tool-preview-item" onclick="showSection('search')">
+          <span class="icon">🔍</span> Cari Anime, Manga, Film
+        </div>
+        <div class="tool-preview-item" onclick="showSection('stalker')">
+          <span class="icon">👤</span> Stalk TikTok, GitHub, IG
+        </div>
+        <div class="tool-preview-item" onclick="showSection('tools')">
+          <span class="icon">🔧</span> QR Code, Screenshot Web
+        </div>
+        <div class="tool-preview-item" onclick="showSection('primbon')">
+          <span class="icon">🔮</span> Primbon & Zodiak
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="dashboard-grid fade-in">
-
-      <a href="downloader.html" class="dash-card" data-color="purple">
-        <div class="dash-card-icon">⬇</div>
-        <div>
-          <div class="dash-card-title">Downloader</div>
-          <div class="dash-card-desc">Download video & foto HD dari semua medsos</div>
-        </div>
-        <div class="dash-card-count">4 tools →</div>
-      </a>
-
-      <a href="enhancer.html" class="dash-card" data-color="green">
-        <div class="dash-card-icon">✨</div>
-        <div>
-          <div class="dash-card-title">Enhancer</div>
-          <div class="dash-card-desc">Remove background & stalk akun TikTok</div>
-        </div>
-        <div class="dash-card-count">2 tools →</div>
-      </a>
-
-      <a href="ai-image.html" class="dash-card" data-color="warm">
-        <div class="dash-card-icon">🎨</div>
-        <div>
-          <div class="dash-card-title">AI Image</div>
-          <div class="dash-card-desc">Transform foto jadi anime, chibi, figura & lebih</div>
-        </div>
-        <div class="dash-card-count">6 styles →</div>
-      </a>
-
-      <a href="tools.html" class="dash-card" data-color="cool">
-        <div class="dash-card-icon">🛠</div>
-        <div>
-          <div class="dash-card-title">Tools</div>
-          <div class="dash-card-desc">IQC Generator & Text to Speech lengkap</div>
-        </div>
-        <div class="dash-card-count">2 tools →</div>
-      </a>
-
+  <main>
+    <div class="cat-tabs" style="margin-top:0">
+      <button class="cat-tab" onclick="showSection('download')">⬇️ Download</button>
+      <button class="cat-tab" onclick="showSection('ai')">🎨 AI Tools</button>
+      <button class="cat-tab" onclick="showSection('search')">🔍 Search</button>
+      <button class="cat-tab" onclick="showSection('stalker')">👤 Stalker</button>
+      <button class="cat-tab" onclick="showSection('tools')">🔧 Utilities</button>
+      <button class="cat-tab" onclick="showSection('primbon')">🔮 Primbon</button>
     </div>
   </main>
+</div>
 
-  <footer class="footer">
-    <p>BAYYZ TOOLS · Gratis untuk semua 🌸 · by <a href="https://t.me/bayyzofc1" target="_blank">@bayyzofc1</a></p>
-  </footer>
+<!-- MAIN SECTIONS -->
+<main id="main-content" style="display:none">
+  <div class="cat-tabs" id="cat-tabs-main">
+    <button class="cat-tab" onclick="showSection('download')" data-cat="download">⬇️ Download</button>
+    <button class="cat-tab" onclick="showSection('ai')" data-cat="ai">🎨 AI Tools</button>
+    <button class="cat-tab" onclick="showSection('search')" data-cat="search">🔍 Search</button>
+    <button class="cat-tab" onclick="showSection('stalker')" data-cat="stalker">👤 Stalker</button>
+    <button class="cat-tab" onclick="showSection('tools')" data-cat="tools">🔧 Utilities</button>
+    <button class="cat-tab" onclick="showSection('primbon')" data-cat="primbon">🔮 Primbon</button>
+  </div>
 
-  <div class="toast" id="toast"></div>
-  <script>
-    // staggered animation
-    document.querySelectorAll('.dash-card').forEach((c,i) => {
-      c.style.animationDelay = (i * 0.07) + 's';
-      c.classList.add('fade-in');
+  <!-- DOWNLOAD -->
+  <div class="tools-section" id="sec-download">
+    <div class="section-title">Download</div>
+    <p class="section-desc">Download video & audio dari berbagai platform media sosial.</p>
+    <div class="tool-grid">
+
+      <!-- YouTube MP3 -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎵</div>
+          <div class="tool-info">
+            <h3>YouTube → MP3</h3>
+            <p>Download audio dari video YouTube</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="yt-mp3-url" placeholder="https://youtube.com/watch?v=...">
+          <button class="btn btn-primary" onclick="ytmp3()">Download MP3</button>
+          <div class="tool-result" id="yt-mp3-result"></div>
+        </div>
+      </div>
+
+      <!-- YouTube MP4 -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎬</div>
+          <div class="tool-info">
+            <h3>YouTube → MP4</h3>
+            <p>Download video YouTube kualitas 360p</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="yt-mp4-url" placeholder="https://youtube.com/watch?v=...">
+          <button class="btn btn-primary" onclick="ytmp4()">Download MP4</button>
+          <div class="tool-result" id="yt-mp4-result"></div>
+        </div>
+      </div>
+
+      <!-- TikTok -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎵</div>
+          <div class="tool-info">
+            <h3>TikTok Downloader</h3>
+            <p>Download video TikTok tanpa watermark</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="tt-url" placeholder="https://vt.tiktok.com/...">
+          <button class="btn btn-primary" onclick="tiktokdl()">Download</button>
+          <div class="tool-result" id="tt-result"></div>
+        </div>
+      </div>
+
+      <!-- Instagram -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">📸</div>
+          <div class="tool-info">
+            <h3>Instagram Downloader</h3>
+            <p>Download foto & video dari Instagram</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="ig-url" placeholder="https://instagram.com/p/...">
+          <button class="btn btn-primary" onclick="igdl()">Download</button>
+          <div class="tool-result" id="ig-result"></div>
+        </div>
+      </div>
+
+      <!-- Spotify -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎧</div>
+          <div class="tool-info">
+            <h3>Spotify Downloader</h3>
+            <p>Download lagu dari Spotify</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="sp-url" placeholder="https://open.spotify.com/track/...">
+          <button class="btn btn-primary" onclick="spotifydl()">Download</button>
+          <div class="tool-result" id="sp-result"></div>
+        </div>
+      </div>
+
+      <!-- Mediafire -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">📁</div>
+          <div class="tool-info">
+            <h3>Mediafire Downloader</h3>
+            <p>Ambil direct link dari Mediafire</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="mf-url" placeholder="https://mediafire.com/file/...">
+          <button class="btn btn-primary" onclick="mediafiredl()">Get Link</button>
+          <div class="tool-result" id="mf-result"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AI TOOLS -->
+  <div class="tools-section" id="sec-ai">
+    <div class="section-title">AI Tools</div>
+    <p class="section-desc">Tools berbasis AI untuk edit gambar dan konversi.</p>
+    <div class="tool-grid">
+
+      <!-- Remove BG -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🪄</div>
+          <div class="tool-info">
+            <h3>Remove Background</h3>
+            <p>Hapus background gambar otomatis dengan AI</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <div class="file-drop" id="rmbg-drop">
+            <input type="file" accept="image/*" onchange="rmbgFile(this)">
+            <div class="file-drop-label">
+              🖼️ <strong>Pilih gambar</strong> atau drag & drop<br>
+              <span id="rmbg-filename" style="color:var(--accent-warm)"></span>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="rmbg-btn" onclick="removebg()" disabled>Remove Background</button>
+          <div class="tool-result" id="rmbg-result"></div>
+        </div>
+      </div>
+
+      <!-- HD Upscale -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">✨</div>
+          <div class="tool-info">
+            <h3>Enhance HD</h3>
+            <p>Tingkatkan kualitas gambar jadi HD</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="hd-url" placeholder="URL gambar atau paste link...">
+          <button class="btn btn-primary" onclick="hdImage()">Enhance</button>
+          <div class="tool-result" id="hd-result"></div>
+        </div>
+      </div>
+
+      <!-- Screenshot Web -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">📸</div>
+          <div class="tool-info">
+            <h3>Screenshot Website</h3>
+            <p>Ambil screenshot dari URL website</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="ss-url" placeholder="https://example.com">
+          <button class="btn btn-primary" onclick="screenshotWeb()">Screenshot</button>
+          <div class="tool-result" id="ss-result"></div>
+        </div>
+      </div>
+
+      <!-- To Anime -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎌</div>
+          <div class="tool-info">
+            <h3>To Anime Style</h3>
+            <p>Ubah foto jadi gambar anime dengan AI</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="toanime-url" placeholder="URL gambar...">
+          <button class="btn btn-primary" onclick="toAnime()">Convert</button>
+          <div class="tool-result" id="toanime-result"></div>
+        </div>
+      </div>
+
+      <!-- To Chibi -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🧸</div>
+          <div class="tool-info">
+            <h3>To Chibi</h3>
+            <p>Ubah foto jadi karakter chibi lucu</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="tochibi-url" placeholder="URL gambar...">
+          <button class="btn btn-primary" onclick="toChibi()">Convert</button>
+          <div class="tool-result" id="tochibi-result"></div>
+        </div>
+      </div>
+
+      <!-- To Ghibli -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🌿</div>
+          <div class="tool-info">
+            <h3>To Ghibli Style</h3>
+            <p>Ubah foto jadi style animasi Ghibli</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="toghibli-url" placeholder="URL gambar...">
+          <button class="btn btn-primary" onclick="toGhibli()">Convert</button>
+          <div class="tool-result" id="toghibli-result"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="tools-section" id="sec-search">
+    <div class="section-title">Search</div>
+    <p class="section-desc">Cari anime, manga, film, chord gitar, APK, dan lainnya.</p>
+    <div class="tool-grid">
+
+      <!-- Anime Search -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎌</div>
+          <div class="tool-info">
+            <h3>Cari Anime</h3>
+            <p>Cari info anime dari database lengkap</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="anime-q" placeholder="Nama anime...">
+          <button class="btn btn-primary" onclick="searchAnime()">Cari</button>
+          <div class="tool-result" id="anime-result"></div>
+        </div>
+      </div>
+
+      <!-- Manga Search -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">📚</div>
+          <div class="tool-info">
+            <h3>Cari Manga</h3>
+            <p>Cari informasi manga</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="manga-q" placeholder="Judul manga...">
+          <button class="btn btn-primary" onclick="searchManga()">Cari</button>
+          <div class="tool-result" id="manga-result"></div>
+        </div>
+      </div>
+
+      <!-- Film -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎬</div>
+          <div class="tool-info">
+            <h3>Cari Film</h3>
+            <p>Cari info & streaming film</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="film-q" placeholder="Judul film...">
+          <button class="btn btn-primary" onclick="searchFilm()">Cari</button>
+          <div class="tool-result" id="film-result"></div>
+        </div>
+      </div>
+
+      <!-- Chord -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎸</div>
+          <div class="tool-info">
+            <h3>Chord Gitar</h3>
+            <p>Cari chord dan lirik lagu</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="chord-q" placeholder="Nama lagu atau artis...">
+          <button class="btn btn-primary" onclick="searchChord()">Cari Chord</button>
+          <div class="tool-result" id="chord-result"></div>
+        </div>
+      </div>
+
+      <!-- APK Mod -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">📱</div>
+          <div class="tool-info">
+            <h3>APK Mod</h3>
+            <p>Cari APK modded dari an1.com</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="apk-q" placeholder="Nama aplikasi...">
+          <button class="btn btn-primary" onclick="searchApk()">Cari APK</button>
+          <div class="tool-result" id="apk-result"></div>
+        </div>
+      </div>
+
+      <!-- Wikipedia -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">📖</div>
+          <div class="tool-info">
+            <h3>Wikipedia</h3>
+            <p>Cari artikel Wikipedia</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="wiki-q" placeholder="Kata kunci...">
+          <button class="btn btn-primary" onclick="searchWiki()">Cari</button>
+          <div class="tool-result" id="wiki-result"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STALKER -->
+  <div class="tools-section" id="sec-stalker">
+    <div class="section-title">Stalker</div>
+    <p class="section-desc">Lihat informasi publik dari berbagai platform.</p>
+    <div class="tool-grid">
+
+      <!-- TikTok Stalk -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🎵</div>
+          <div class="tool-info">
+            <h3>TikTok Stalker</h3>
+            <p>Info akun TikTok: followers, likes, bio</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="ttstalk-user" placeholder="Username TikTok (tanpa @)">
+          <button class="btn btn-primary" onclick="tiktokStalk()">Stalk</button>
+          <div class="tool-result" id="ttstalk-result"></div>
+        </div>
+      </div>
+
+      <!-- GitHub Stalk -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">💻</div>
+          <div class="tool-info">
+            <h3>GitHub Stalker</h3>
+            <p>Info profil & repo GitHub</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="ghstalk-user" placeholder="Username GitHub">
+          <button class="btn btn-primary" onclick="githubStalk()">Stalk</button>
+          <div class="tool-result" id="ghstalk-result"></div>
+        </div>
+      </div>
+
+      <!-- YouTube Stalk -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">▶️</div>
+          <div class="tool-info">
+            <h3>YouTube Stalker</h3>
+            <p>Info channel YouTube: subs, views, video</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="ytstalk-user" placeholder="Username / Channel ID">
+          <button class="btn btn-primary" onclick="ytStalk()">Stalk</button>
+          <div class="tool-result" id="ytstalk-result"></div>
+        </div>
+      </div>
+
+      <!-- Pinterest Stalk -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">📌</div>
+          <div class="tool-info">
+            <h3>Pinterest Stalker</h3>
+            <p>Info akun Pinterest</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="pinstalk-user" placeholder="Username Pinterest">
+          <button class="btn btn-primary" onclick="pinterestStalk()">Stalk</button>
+          <div class="tool-result" id="pinstalk-result"></div>
+        </div>
+      </div>
+
+      <!-- IP Lookup -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🌐</div>
+          <div class="tool-info">
+            <h3>IP Lookup</h3>
+            <p>Cek info dari alamat IP atau domain</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="ip-input" placeholder="8.8.8.8 atau google.com">
+          <button class="btn btn-primary" onclick="ipLookup()">Lookup</button>
+          <div class="tool-result" id="ip-result"></div>
+        </div>
+      </div>
+
+      <!-- Whois -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🔎</div>
+          <div class="tool-info">
+            <h3>WHOIS Domain</h3>
+            <p>Cek info kepemilikan domain</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="whois-input" placeholder="example.com">
+          <button class="btn btn-primary" onclick="whoisLookup()">WHOIS</button>
+          <div class="tool-result" id="whois-result"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- UTILITIES -->
+  <div class="tools-section" id="sec-tools">
+    <div class="section-title">Utilities</div>
+    <p class="section-desc">Tools serba guna untuk keperluan sehari-hari.</p>
+    <div class="tool-grid">
+
+      <!-- QR Code -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">📷</div>
+          <div class="tool-info">
+            <h3>Buat QR Code</h3>
+            <p>Generate QR code dari teks atau URL</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <textarea class="tool-textarea" id="qr-text" placeholder="Teks atau URL yang mau di-QR..."></textarea>
+          <button class="btn btn-primary" onclick="makeQR()">Generate QR</button>
+          <div class="tool-result" id="qr-result"></div>
+        </div>
+      </div>
+
+      <!-- Screenshot Web -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🖥️</div>
+          <div class="tool-info">
+            <h3>Screenshot Web</h3>
+            <p>Screenshot tampilan website apapun</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="ssweb-url" placeholder="https://google.com">
+          <button class="btn btn-primary" onclick="ssWeb()">Screenshot</button>
+          <div class="tool-result" id="ssweb-result"></div>
+        </div>
+      </div>
+
+      <!-- DNS Lookup -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🌐</div>
+          <div class="tool-info">
+            <h3>DNS Lookup</h3>
+            <p>Cek DNS record dari sebuah domain</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="dns-domain" placeholder="example.com">
+          <button class="btn btn-primary" onclick="dnsLookup()">Lookup</button>
+          <div class="tool-result" id="dns-result"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRIMBON -->
+  <div class="tools-section" id="sec-primbon">
+    <div class="section-title">Primbon</div>
+    <p class="section-desc">Ramalan, zodiak, dan hal mistis lainnya — just for fun!</p>
+    <div class="tool-grid">
+
+      <!-- Arti Nama -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">✨</div>
+          <div class="tool-info">
+            <h3>Arti Nama</h3>
+            <p>Cari arti dan makna dari sebuah nama</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="artinama-input" placeholder="Masukkan nama...">
+          <button class="btn btn-primary" onclick="artiNama()">Cari Arti</button>
+          <div class="tool-result" id="artinama-result"></div>
+        </div>
+      </div>
+
+      <!-- Zodiak -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">♈</div>
+          <div class="tool-info">
+            <h3>Ramalan Zodiak</h3>
+            <p>Lihat ramalan zodiak kamu hari ini</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <select class="tool-select" id="zodiak-select">
+            <option value="">-- Pilih Zodiak --</option>
+            <option value="aries">♈ Aries</option>
+            <option value="taurus">♉ Taurus</option>
+            <option value="gemini">♊ Gemini</option>
+            <option value="cancer">♋ Cancer</option>
+            <option value="leo">♌ Leo</option>
+            <option value="virgo">♍ Virgo</option>
+            <option value="libra">♎ Libra</option>
+            <option value="scorpio">♏ Scorpio</option>
+            <option value="sagitarius">♐ Sagitarius</option>
+            <option value="capricorn">♑ Capricorn</option>
+            <option value="aquarius">♒ Aquarius</option>
+            <option value="pisces">♓ Pisces</option>
+          </select>
+          <button class="btn btn-primary" onclick="ramalanZodiak()">Lihat Ramalan</button>
+          <div class="tool-result" id="zodiak-result"></div>
+        </div>
+      </div>
+
+      <!-- Kecocokan Nama -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">💕</div>
+          <div class="tool-info">
+            <h3>Kecocokan Nama Pasangan</h3>
+            <p>Cek kecocokan nama kamu dan pasangan</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="jodoh-nama1" placeholder="Nama kamu...">
+          <input class="tool-input" id="jodoh-nama2" placeholder="Nama pasangan...">
+          <button class="btn btn-primary" onclick="kecocokanNama()">Cek Kecocokan</button>
+          <div class="tool-result" id="jodoh-result"></div>
+        </div>
+      </div>
+
+      <!-- Tafsir Mimpi -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">💭</div>
+          <div class="tool-info">
+            <h3>Tafsir Mimpi</h3>
+            <p>Cari arti dan tafsiran dari mimpimu</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="mimpi-input" placeholder="Mimpi tentang apa? (contoh: ular)">
+          <button class="btn btn-primary" onclick="tafsirMimpi()">Tafsir</button>
+          <div class="tool-result" id="mimpi-result"></div>
+        </div>
+      </div>
+
+      <!-- Nomor Hoki -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">🍀</div>
+          <div class="tool-info">
+            <h3>Nomor Hoki</h3>
+            <p>Cari nomor hoki berdasarkan nama</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="hoki-nama" placeholder="Nama kamu...">
+          <button class="btn btn-primary" onclick="nomorHoki()">Cari Nomor Hoki</button>
+          <div class="tool-result" id="hoki-result"></div>
+        </div>
+      </div>
+
+      <!-- Sifat Usaha Bisnis -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon">💼</div>
+          <div class="tool-info">
+            <h3>Sifat Usaha Bisnis</h3>
+            <p>Cek potensi bisnis berdasarkan nama</p>
+          </div>
+        </div>
+        <div class="tool-input-wrap">
+          <input class="tool-input" id="bisnis-nama" placeholder="Nama kamu...">
+          <button class="btn btn-primary" onclick="sifatBisnis()">Cek</button>
+          <div class="tool-result" id="bisnis-result"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>BAYYZ TOOLS — Tools gratis untuk semua. &nbsp;|&nbsp; <a href="#">GitHub</a></p>
+</footer>
+
+<script>
+// ============================
+// NAVIGATION
+// ============================
+function showSection(name) {
+  // Hide home
+  document.getElementById('sec-home').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+
+  // Hide all sections
+  document.querySelectorAll('.tools-section').forEach(s => s.classList.remove('visible'));
+
+  // Show target
+  const target = document.getElementById('sec-' + name);
+  if (target) target.classList.add('visible');
+
+  // Update tabs
+  document.querySelectorAll('[data-cat]').forEach(t => {
+    t.classList.toggle('active', t.dataset.cat === name);
+  });
+  document.querySelectorAll('#nav-' + name).forEach(a => {
+    document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+}
+
+// ============================
+// HELPERS
+// ============================
+function setLoading(id, text = 'Memproses...') {
+  const el = document.getElementById(id);
+  el.className = 'tool-result info show';
+  el.innerHTML = `<span class="spinner"></span> ${text}`;
+}
+
+function setResult(id, html, type = 'info') {
+  const el = document.getElementById(id);
+  el.className = `tool-result ${type} show`;
+  el.innerHTML = html;
+}
+
+function setError(id, msg) {
+  setResult(id, `❌ ${msg}`, 'error');
+}
+
+function fmt(num) {
+  if (!num) return '0';
+  num = parseInt(num);
+  if (num >= 1e9) return (num/1e9).toFixed(1) + 'B';
+  if (num >= 1e6) return (num/1e6).toFixed(1) + 'M';
+  if (num >= 1e3) return (num/1e3).toFixed(1) + 'K';
+  return num.toString();
+}
+
+async function safeFetch(url) {
+  const r = await fetch(url);
+  const text = await r.text();
+  try { return JSON.parse(text); }
+  catch { throw new Error('API tidak merespons dengan benar'); }
+}
+
+const NEXRAY = 'https://api.nexray.web.id';
+const NEOXR = 'https://api.neoxr.eu/api';
+const BAGUSS = 'https://api.baguss.xyz/api';
+const FAA = 'https://api-faa.my.id/faa';
+const HACKERTARGET = 'https://api.hackertarget.com';
+const SIPUT = 'https://api.siputzx.my.id/api';
+
+// ============================
+// DOWNLOAD
+// ============================
+async function ytmp3() {
+  const url = document.getElementById('yt-mp3-url').value.trim();
+  if (!url) return setError('yt-mp3-result', 'Masukkan URL YouTube dulu');
+  setLoading('yt-mp3-result', 'Mengunduh audio...');
+  try {
+    const d = await safeFetch(`${NEXRAY}/downloader/ytmp3?url=${encodeURIComponent(url)}`);
+    if (!d.result?.url) throw new Error(d.message || 'Gagal');
+    setResult('yt-mp3-result', `
+      <div>🎵 <strong>${d.result.title || 'Audio'}</strong></div>
+      <div class="result-links">
+        <a class="result-link" href="${d.result.url}" target="_blank" download>⬇ Download MP3</a>
+      </div>
+    `, 'success');
+  } catch(e) { setError('yt-mp3-result', e.message); }
+}
+
+async function ytmp4() {
+  const url = document.getElementById('yt-mp4-url').value.trim();
+  if (!url) return setError('yt-mp4-result', 'Masukkan URL YouTube dulu');
+  setLoading('yt-mp4-result', 'Mengunduh video...');
+  try {
+    const d = await safeFetch(`${NEXRAY}/downloader/ytmp4?url=${encodeURIComponent(url)}&resolusi=360`);
+    if (!d.result?.url) throw new Error(d.message || 'Gagal');
+    setResult('yt-mp4-result', `
+      <div>🎬 <strong>${d.result.title || 'Video'}</strong></div>
+      <div class="result-links">
+        <a class="result-link" href="${d.result.url}" target="_blank" download>⬇ Download MP4</a>
+      </div>
+    `, 'success');
+  } catch(e) { setError('yt-mp4-result', e.message); }
+}
+
+async function tiktokdl() {
+  const url = document.getElementById('tt-url').value.trim();
+  if (!url) return setError('tt-result', 'Masukkan URL TikTok dulu');
+  setLoading('tt-result', 'Mengunduh...');
+  try {
+    const d = await safeFetch(`${NEXRAY}/downloader/tiktok?url=${encodeURIComponent(url)}`);
+    const res = d.result || d.data || d;
+    const videoUrl = res?.video || res?.play || res?.nowm;
+    const audioUrl = res?.music || res?.audio;
+    if (!videoUrl && !audioUrl) throw new Error(d.message || 'Gagal mendapatkan link');
+    let links = '';
+    if (videoUrl) links += `<a class="result-link" href="${videoUrl}" target="_blank" download>⬇ Video (No WM)</a>`;
+    if (audioUrl) links += `<a class="result-link" href="${audioUrl}" target="_blank" download>🎵 Audio</a>`;
+    setResult('tt-result', `
+      <div>✅ <strong>${res?.title || res?.desc || 'TikTok'}</strong></div>
+      <div class="result-links">${links}</div>
+    `, 'success');
+  } catch(e) { setError('tt-result', e.message); }
+}
+
+async function igdl() {
+  const url = document.getElementById('ig-url').value.trim();
+  if (!url) return setError('ig-result', 'Masukkan URL Instagram dulu');
+  setLoading('ig-result', 'Mengunduh...');
+  try {
+    const d = await safeFetch(`${NEXRAY}/downloader/instagram?url=${encodeURIComponent(url)}`);
+    const items = d.result || [];
+    if (!items.length) throw new Error(d.message || 'Gagal');
+    let links = items.map((it, i) => `<a class="result-link" href="${it.url}" target="_blank" download>⬇ File ${i+1}</a>`).join('');
+    setResult('ig-result', `<div class="result-links">${links}</div>`, 'success');
+  } catch(e) { setError('ig-result', e.message); }
+}
+
+async function spotifydl() {
+  const url = document.getElementById('sp-url').value.trim();
+  if (!url) return setError('sp-result', 'Masukkan URL Spotify dulu');
+  setLoading('sp-result', 'Mengambil lagu...');
+  try {
+    const d = await safeFetch(`${NEXRAY}/downloader/v1/spotify?url=${encodeURIComponent(url)}`);
+    const res = d.result || d;
+    const dlUrl = res?.url || res?.download || res?.audio;
+    if (!dlUrl) throw new Error(d.message || 'Gagal');
+    setResult('sp-result', `
+      <div>🎧 <strong>${res.title || 'Spotify'}</strong> — ${res.artist || ''}</div>
+      <div class="result-links"><a class="result-link" href="${dlUrl}" target="_blank" download>⬇ Download</a></div>
+    `, 'success');
+  } catch(e) { setError('sp-result', e.message); }
+}
+
+async function mediafiredl() {
+  const url = document.getElementById('mf-url').value.trim();
+  if (!url) return setError('mf-result', 'Masukkan URL Mediafire dulu');
+  setLoading('mf-result', 'Mengambil link...');
+  try {
+    const d = await safeFetch(`${NEOXR}/mediafire?url=${encodeURIComponent(url)}`);
+    const res = d.result || d.data || d;
+    const dlUrl = res?.url || res?.link || res?.direct;
+    if (!dlUrl) throw new Error(d.message || 'Gagal');
+    setResult('mf-result', `
+      <div>📁 <strong>${res.name || 'File'}</strong> ${res.size ? '— ' + res.size : ''}</div>
+      <div class="result-links"><a class="result-link" href="${dlUrl}" target="_blank" download>⬇ Download</a></div>
+    `, 'success');
+  } catch(e) { setError('mf-result', e.message); }
+}
+
+// ============================
+// AI TOOLS
+// ============================
+let rmbgFileData = null;
+function rmbgFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  document.getElementById('rmbg-filename').textContent = file.name;
+  document.getElementById('rmbg-btn').disabled = false;
+  const reader = new FileReader();
+  reader.onload = e => { rmbgFileData = e.target.result; };
+  reader.readAsDataURL(file);
+}
+
+async function removebg() {
+  if (!rmbgFileData) return setError('rmbg-result', 'Pilih gambar dulu');
+  setLoading('rmbg-result', 'Menghapus background...');
+  try {
+    // Use remove.bg compatible API via FAA proxy
+    const res = await fetch(`${FAA}/removebg`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ image: rmbgFileData })
     });
-  </script>
+    const d = await res.json();
+    const imgUrl = d.result?.url || d.result || d.url;
+    if (!imgUrl) throw new Error(d.message || 'Gagal');
+    setResult('rmbg-result', `
+      <div>✅ Background berhasil dihapus</div>
+      <img class="result-img" src="${imgUrl}">
+      <div class="result-links"><a class="result-link" href="${imgUrl}" target="_blank" download>⬇ Download</a></div>
+    `, 'success');
+  } catch(e) {
+    // Fallback: show upload instructions
+    setResult('rmbg-result', `
+      <div>Coba gunakan <a href="https://remove.bg" target="_blank" style="color:var(--accent-warm)">remove.bg</a> secara langsung untuk hasil terbaik.</div>
+      <div style="font-size:11px;color:var(--text-3);margin-top:4px">Error: ${e.message}</div>
+    `, 'error');
+  }
+}
+
+async function hdImage() {
+  const url = document.getElementById('hd-url').value.trim();
+  if (!url) return setError('hd-result', 'Masukkan URL gambar dulu');
+  setLoading('hd-result', 'Enhancing gambar...');
+  try {
+    const d = await safeFetch(`${FAA}/hdv4?image=${encodeURIComponent(url)}`);
+    const imgUrl = d.result?.url || d.result || d.url;
+    if (!imgUrl) throw new Error(d.message || 'Gagal');
+    setResult('hd-result', `
+      <img class="result-img" src="${imgUrl}">
+      <div class="result-links"><a class="result-link" href="${imgUrl}" target="_blank" download>⬇ Download HD</a></div>
+    `, 'success');
+  } catch(e) { setError('hd-result', e.message); }
+}
+
+async function screenshotWeb() {
+  const url = document.getElementById('ss-url').value.trim();
+  if (!url) return setError('ss-result', 'Masukkan URL dulu');
+  setLoading('ss-result', 'Screenshot...');
+  try {
+    const d = await safeFetch(`${FAA}/ssweb-3hasil?url=${encodeURIComponent(url)}`);
+    const results = d.result || [];
+    if (!results.length) throw new Error('Gagal screenshot');
+    let imgs = results.map(r => `<img class="result-img" src="${r.url || r}" style="margin-bottom:8px">`).join('');
+    setResult('ss-result', imgs, 'success');
+  } catch(e) { setError('ss-result', e.message); }
+}
+
+async function toAnime() {
+  const url = document.getElementById('toanime-url').value.trim();
+  if (!url) return setError('toanime-result', 'Masukkan URL gambar dulu');
+  setLoading('toanime-result', 'Converting...');
+  try {
+    const d = await safeFetch(`${FAA}/toanime?url=${encodeURIComponent(url)}`);
+    const imgUrl = d.result?.url || d.result || d.url;
+    if (!imgUrl) throw new Error(d.message || 'Gagal');
+    setResult('toanime-result', `
+      <img class="result-img" src="${imgUrl}">
+      <div class="result-links"><a class="result-link" href="${imgUrl}" target="_blank" download>⬇ Download</a></div>
+    `, 'success');
+  } catch(e) { setError('toanime-result', e.message); }
+}
+
+async function toChibi() {
+  const url = document.getElementById('tochibi-url').value.trim();
+  if (!url) return setError('tochibi-result', 'Masukkan URL gambar dulu');
+  setLoading('tochibi-result', 'Converting...');
+  try {
+    const d = await safeFetch(`${FAA}/tochibi?url=${encodeURIComponent(url)}`);
+    const imgUrl = d.result?.url || d.result || d.url;
+    if (!imgUrl) throw new Error(d.message || 'Gagal');
+    setResult('tochibi-result', `
+      <img class="result-img" src="${imgUrl}">
+      <div class="result-links"><a class="result-link" href="${imgUrl}" target="_blank" download>⬇ Download</a></div>
+    `, 'success');
+  } catch(e) { setError('tochibi-result', e.message); }
+}
+
+async function toGhibli() {
+  const url = document.getElementById('toghibli-url').value.trim();
+  if (!url) return setError('toghibli-result', 'Masukkan URL gambar dulu');
+  setLoading('toghibli-result', 'Converting...');
+  try {
+    const d = await safeFetch(`${SIPUT}/ai/toghibli?url=${encodeURIComponent(url)}`);
+    const imgUrl = d.result?.url || d.data?.url || d.url;
+    if (!imgUrl) throw new Error(d.message || 'Gagal');
+    setResult('toghibli-result', `
+      <img class="result-img" src="${imgUrl}">
+      <div class="result-links"><a class="result-link" href="${imgUrl}" target="_blank" download>⬇ Download</a></div>
+    `, 'success');
+  } catch(e) { setError('toghibli-result', e.message); }
+}
+
+// ============================
+// SEARCH
+// ============================
+async function searchAnime() {
+  const q = document.getElementById('anime-q').value.trim();
+  if (!q) return setError('anime-result', 'Masukkan nama anime');
+  setLoading('anime-result', 'Mencari...');
+  try {
+    const d = await safeFetch(`${NEOXR}/anime?q=${encodeURIComponent(q)}`);
+    const list = d.result || [];
+    if (!list.length) throw new Error('Anime tidak ditemukan');
+    const a = list[0];
+    setResult('anime-result', `
+      <div style="display:flex;gap:12px">
+        ${a.image ? `<img src="${a.image}" style="width:80px;border-radius:6px;object-fit:cover">` : ''}
+        <div>
+          <div style="font-weight:700;margin-bottom:4px">${a.title || a.name}</div>
+          <div style="font-size:12px;color:var(--text-2)">${a.type || ''} · ${a.episodes || '?'} eps · ⭐ ${a.score || '-'}</div>
+          <div style="font-size:12px;margin-top:6px;color:var(--text-2)">${(a.synopsis || a.description || '').slice(0, 200)}...</div>
+          ${a.url ? `<div class="result-links"><a class="result-link" href="${a.url}" target="_blank">🔗 Detail</a></div>` : ''}
+        </div>
+      </div>
+    `, 'info');
+  } catch(e) { setError('anime-result', e.message); }
+}
+
+async function searchManga() {
+  const q = document.getElementById('manga-q').value.trim();
+  if (!q) return setError('manga-result', 'Masukkan judul manga');
+  setLoading('manga-result', 'Mencari...');
+  try {
+    const d = await safeFetch(`https://api.lolhuman.xyz/api/manga?query=${encodeURIComponent(q)}`);
+    const list = d.result || [];
+    if (!list.length) throw new Error('Manga tidak ditemukan');
+    const m = list[0];
+    setResult('manga-result', `
+      <div style="font-weight:700">${m.title}</div>
+      <div style="font-size:12px;color:var(--text-2);margin-top:4px">${m.type || ''} · ${m.status || ''} · ${m.chapter || ''}</div>
+      <div class="result-links"><a class="result-link" href="${m.url}" target="_blank">🔗 Baca</a></div>
+    `, 'info');
+  } catch(e) { setError('manga-result', e.message); }
+}
+
+async function searchFilm() {
+  const q = document.getElementById('film-q').value.trim();
+  if (!q) return setError('film-result', 'Masukkan judul film');
+  setLoading('film-result', 'Mencari...');
+  try {
+    const d = await safeFetch(`${NEOXR}/film?q=${encodeURIComponent(q)}`);
+    const list = d.result || [];
+    if (!list.length) throw new Error('Film tidak ditemukan');
+    const f = list[0];
+    setResult('film-result', `
+      <div style="display:flex;gap:12px">
+        ${f.image || f.poster ? `<img src="${f.image || f.poster}" style="width:60px;border-radius:6px;object-fit:cover">` : ''}
+        <div>
+          <div style="font-weight:700">${f.title}</div>
+          <div style="font-size:12px;color:var(--text-2)">${f.year || ''} · ${f.rating || ''}</div>
+          <div class="result-links"><a class="result-link" href="${f.url}" target="_blank">🔗 Lihat</a></div>
+        </div>
+      </div>
+    `, 'info');
+  } catch(e) { setError('film-result', e.message); }
+}
+
+async function searchChord() {
+  const q = document.getElementById('chord-q').value.trim();
+  if (!q) return setError('chord-result', 'Masukkan nama lagu');
+  setLoading('chord-result', 'Mencari chord...');
+  try {
+    const d = await safeFetch(`${NEOXR}/chord?q=${encodeURIComponent(q)}`);
+    const res = d.result || d.data;
+    if (!res) throw new Error('Chord tidak ditemukan');
+    const list = Array.isArray(res) ? res : [res];
+    const c = list[0];
+    setResult('chord-result', `
+      <div style="font-weight:700">${c.title || c.judul || q}</div>
+      <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">${c.artist || c.artis || ''}</div>
+      ${c.url ? `<div class="result-links"><a class="result-link" href="${c.url}" target="_blank">🔗 Lihat Chord</a></div>` : ''}
+    `, 'info');
+  } catch(e) { setError('chord-result', e.message); }
+}
+
+async function searchApk() {
+  const q = document.getElementById('apk-q').value.trim();
+  if (!q) return setError('apk-result', 'Masukkan nama aplikasi');
+  setLoading('apk-result', 'Mencari APK...');
+  try {
+    const d = await safeFetch(`${NEOXR}/an1?q=${encodeURIComponent(q)}`);
+    const list = d.result || [];
+    if (!list.length) throw new Error('APK tidak ditemukan');
+    const app = list[0];
+    setResult('apk-result', `
+      <div style="display:flex;gap:10px;align-items:center">
+        ${app.image ? `<img src="${app.image}" style="width:48px;border-radius:8px">` : ''}
+        <div>
+          <div style="font-weight:700">${app.title}</div>
+          <div style="font-size:12px;color:var(--text-2)">${app.version || ''} · ${app.size || ''}</div>
+        </div>
+      </div>
+      <div class="result-links"><a class="result-link" href="${app.url}" target="_blank">🔗 Lihat</a></div>
+    `, 'info');
+  } catch(e) { setError('apk-result', e.message); }
+}
+
+async function searchWiki() {
+  const q = document.getElementById('wiki-q').value.trim();
+  if (!q) return setError('wiki-result', 'Masukkan kata kunci');
+  setLoading('wiki-result', 'Mencari...');
+  try {
+    const d = await safeFetch(`https://id.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`);
+    if (d.type === 'https://mediawiki.org/wiki/HyperSwitch/errors/not_found') throw new Error('Artikel tidak ditemukan');
+    setResult('wiki-result', `
+      <div style="display:flex;gap:12px">
+        ${d.thumbnail?.source ? `<img src="${d.thumbnail.source}" style="width:80px;border-radius:6px;object-fit:cover">` : ''}
+        <div>
+          <div style="font-weight:700;margin-bottom:4px">${d.title}</div>
+          <div style="font-size:12px;color:var(--text-2)">${d.extract?.slice(0, 300) || ''}...</div>
+          <div class="result-links"><a class="result-link" href="${d.content_urls?.desktop?.page}" target="_blank">🔗 Baca Lengkap</a></div>
+        </div>
+      </div>
+    `, 'info');
+  } catch(e) { setError('wiki-result', e.message); }
+}
+
+// ============================
+// STALKER
+// ============================
+async function tiktokStalk() {
+  const user = document.getElementById('ttstalk-user').value.trim().replace('@', '');
+  if (!user) return setError('ttstalk-result', 'Masukkan username TikTok');
+  setLoading('ttstalk-result', 'Stalking...');
+  try {
+    const d = await safeFetch(`${BAGUSS}/stalker/tiktok?username=${encodeURIComponent(user)}`);
+    if (!d.status || !d.user?.user) throw new Error('Username tidak ditemukan');
+    const u = d.user.user;
+    const s = d.user.stats;
+    setResult('ttstalk-result', `
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+        ${u.avatarMedium ? `<img src="${u.avatarMedium}" style="width:52px;height:52px;border-radius:50%;object-fit:cover">` : ''}
+        <div>
+          <div style="font-weight:700">@${u.uniqueId}</div>
+          <div style="font-size:12px;color:var(--text-2)">${u.nickname} ${u.verified ? '✅' : ''}</div>
+          <div style="font-size:11px;color:var(--text-3)">${u.privateAccount ? '🔒 Private' : '🌐 Public'}</div>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-row"><span class="profile-label">Followers</span><span class="profile-val">${fmt(s.followerCount)}</span></div>
+        <div class="profile-row"><span class="profile-label">Following</span><span class="profile-val">${fmt(s.followingCount)}</span></div>
+        <div class="profile-row"><span class="profile-label">Likes</span><span class="profile-val">${fmt(s.heartCount)}</span></div>
+        <div class="profile-row"><span class="profile-label">Videos</span><span class="profile-val">${fmt(s.videoCount)}</span></div>
+      </div>
+      ${u.signature ? `<div style="font-size:12px;color:var(--text-2);margin-top:8px;font-style:italic">${u.signature}</div>` : ''}
+    `, 'info');
+  } catch(e) { setError('ttstalk-result', e.message); }
+}
+
+async function githubStalk() {
+  const user = document.getElementById('ghstalk-user').value.trim();
+  if (!user) return setError('ghstalk-result', 'Masukkan username GitHub');
+  setLoading('ghstalk-result', 'Stalking...');
+  try {
+    const d = await safeFetch(`https://api.github.com/users/${encodeURIComponent(user)}`);
+    if (d.message) throw new Error(d.message);
+    setResult('ghstalk-result', `
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+        <img src="${d.avatar_url}" style="width:52px;height:52px;border-radius:50%;object-fit:cover">
+        <div>
+          <div style="font-weight:700">${d.name || d.login}</div>
+          <div style="font-size:12px;color:var(--text-2)">@${d.login}</div>
+          ${d.company ? `<div style="font-size:11px;color:var(--text-3)">${d.company}</div>` : ''}
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-row"><span class="profile-label">Repos</span><span class="profile-val">${d.public_repos}</span></div>
+        <div class="profile-row"><span class="profile-label">Followers</span><span class="profile-val">${fmt(d.followers)}</span></div>
+        <div class="profile-row"><span class="profile-label">Following</span><span class="profile-val">${d.following}</span></div>
+        <div class="profile-row"><span class="profile-label">Gists</span><span class="profile-val">${d.public_gists}</span></div>
+      </div>
+      ${d.bio ? `<div style="font-size:12px;color:var(--text-2);margin-top:8px;font-style:italic">${d.bio}</div>` : ''}
+      <div class="result-links"><a class="result-link" href="${d.html_url}" target="_blank">🔗 GitHub Profile</a></div>
+    `, 'info');
+  } catch(e) { setError('ghstalk-result', e.message); }
+}
+
+async function ytStalk() {
+  const user = document.getElementById('ytstalk-user').value.trim();
+  if (!user) return setError('ytstalk-result', 'Masukkan username channel');
+  setLoading('ytstalk-result', 'Stalking...');
+  try {
+    const d = await safeFetch(`${BAGUSS}/stalker/ytstalk?username=${encodeURIComponent(user)}`);
+    if (!d.status) throw new Error(d.message || 'Channel tidak ditemukan');
+    const c = d.result || d.data || d.channel;
+    setResult('ytstalk-result', `
+      <div style="font-weight:700;margin-bottom:6px">${c?.name || c?.title || user}</div>
+      <div class="profile-card">
+        ${c?.subscribers ? `<div class="profile-row"><span class="profile-label">Subscribers</span><span class="profile-val">${fmt(c.subscribers)}</span></div>` : ''}
+        ${c?.videos ? `<div class="profile-row"><span class="profile-label">Videos</span><span class="profile-val">${c.videos}</span></div>` : ''}
+        ${c?.views ? `<div class="profile-row"><span class="profile-label">Total Views</span><span class="profile-val">${fmt(c.views)}</span></div>` : ''}
+      </div>
+    `, 'info');
+  } catch(e) { setError('ytstalk-result', e.message); }
+}
+
+async function pinterestStalk() {
+  const user = document.getElementById('pinstalk-user').value.trim();
+  if (!user) return setError('pinstalk-result', 'Masukkan username Pinterest');
+  setLoading('pinstalk-result', 'Stalking...');
+  try {
+    const d = await safeFetch(`${BAGUSS}/stalker/pinterest?username=${encodeURIComponent(user)}`);
+    if (!d.status) throw new Error(d.message || 'User tidak ditemukan');
+    const u = d.result || d.data;
+    setResult('pinstalk-result', `
+      <div style="font-weight:700">${u?.full_name || user}</div>
+      <div class="profile-card" style="margin-top:8px">
+        ${u?.follower_count !== undefined ? `<div class="profile-row"><span class="profile-label">Followers</span><span class="profile-val">${fmt(u.follower_count)}</span></div>` : ''}
+        ${u?.following_count !== undefined ? `<div class="profile-row"><span class="profile-label">Following</span><span class="profile-val">${u.following_count}</span></div>` : ''}
+        ${u?.pin_count !== undefined ? `<div class="profile-row"><span class="profile-label">Pins</span><span class="profile-val">${u.pin_count}</span></div>` : ''}
+      </div>
+    `, 'info');
+  } catch(e) { setError('pinstalk-result', e.message); }
+}
+
+async function ipLookup() {
+  const ip = document.getElementById('ip-input').value.trim();
+  if (!ip) return setError('ip-result', 'Masukkan IP atau domain');
+  setLoading('ip-result', 'Looking up...');
+  try {
+    const d = await safeFetch(`https://ipwho.is/${encodeURIComponent(ip)}`);
+    if (!d.success) throw new Error(d.message || 'IP tidak valid');
+    setResult('ip-result', `
+      <div class="profile-card">
+        <div class="profile-row"><span class="profile-label">IP</span><span class="profile-val">${d.ip}</span></div>
+        <div class="profile-row"><span class="profile-label">Negara</span><span class="profile-val">${d.flag?.emoji || ''} ${d.country} (${d.country_code})</span></div>
+        <div class="profile-row"><span class="profile-label">Kota</span><span class="profile-val">${d.city || '-'}</span></div>
+        <div class="profile-row"><span class="profile-label">Region</span><span class="profile-val">${d.region || '-'}</span></div>
+        <div class="profile-row"><span class="profile-label">ISP</span><span class="profile-val">${d.connection?.isp || '-'}</span></div>
+        <div class="profile-row"><span class="profile-label">Timezone</span><span class="profile-val">${d.timezone?.id || '-'}</span></div>
+        <div class="profile-row"><span class="profile-label">Koordinat</span><span class="profile-val">${d.latitude}, ${d.longitude}</span></div>
+      </div>
+    `, 'info');
+  } catch(e) { setError('ip-result', e.message); }
+}
+
+async function whoisLookup() {
+  const domain = document.getElementById('whois-input').value.trim();
+  if (!domain) return setError('whois-result', 'Masukkan domain');
+  setLoading('whois-result', 'Fetching WHOIS...');
+  try {
+    const d = await safeFetch(`${HACKERTARGET}/whois/?q=${encodeURIComponent(domain)}&output=json`);
+    const text = typeof d === 'string' ? d : JSON.stringify(d, null, 2);
+    setResult('whois-result', `<pre class="result-text">${text.slice(0, 1000)}</pre>`, 'info');
+  } catch(e) {
+    // Fallback: plain text
+    try {
+      const r = await fetch(`${HACKERTARGET}/whois/?q=${encodeURIComponent(domain)}`);
+      const text = await r.text();
+      setResult('whois-result', `<pre class="result-text">${text.slice(0, 1000)}</pre>`, 'info');
+    } catch(e2) { setError('whois-result', e2.message); }
+  }
+}
+
+// ============================
+// UTILITIES
+// ============================
+async function makeQR() {
+  const text = document.getElementById('qr-text').value.trim();
+  if (!text) return setError('qr-result', 'Masukkan teks dulu');
+  setLoading('qr-result', 'Generating QR...');
+  try {
+    const d = await safeFetch(`${FAA}/qr-create?text=${encodeURIComponent(text)}`);
+    const url = d.result?.url || d.result || d.url;
+    if (url) {
+      setResult('qr-result', `
+        <img class="result-img" src="${url}" style="max-width:200px">
+        <div class="result-links"><a class="result-link" href="${url}" target="_blank" download>⬇ Download QR</a></div>
+      `, 'success');
+    } else {
+      // Fallback: QR Server API
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(text)}&size=300x300`;
+      setResult('qr-result', `
+        <img class="result-img" src="${qrUrl}" style="max-width:200px">
+        <div class="result-links"><a class="result-link" href="${qrUrl}" target="_blank" download>⬇ Download QR</a></div>
+      `, 'success');
+    }
+  } catch(e) {
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(text)}&size=300x300`;
+    setResult('qr-result', `
+      <img class="result-img" src="${qrUrl}" style="max-width:200px">
+      <div class="result-links"><a class="result-link" href="${qrUrl}" target="_blank" download>⬇ Download QR</a></div>
+    `, 'success');
+  }
+}
+
+async function ssWeb() {
+  const url = document.getElementById('ssweb-url').value.trim();
+  if (!url) return setError('ssweb-result', 'Masukkan URL dulu');
+  setLoading('ssweb-result', 'Screenshot...');
+  try {
+    // Use screenshotone free tier
+    const ssUrl = `https://api.screenshotone.com/take?url=${encodeURIComponent(url.startsWith('http') ? url : 'https://' + url)}&full_page=false&viewport_width=1280&viewport_height=800`;
+    // Try FAA first
+    const d = await safeFetch(`${FAA}/ssweb?url=${encodeURIComponent(url.startsWith('http') ? url : 'https://' + url)}`);
+    const imgUrl = d.result?.url || d.result || d.url;
+    if (!imgUrl) throw new Error('Gagal');
+    setResult('ssweb-result', `
+      <img class="result-img" src="${imgUrl}">
+      <div class="result-links"><a class="result-link" href="${imgUrl}" target="_blank" download>⬇ Download</a></div>
+    `, 'success');
+  } catch(e) { setError('ssweb-result', e.message); }
+}
+
+async function dnsLookup() {
+  const domain = document.getElementById('dns-domain').value.trim();
+  if (!domain) return setError('dns-result', 'Masukkan domain');
+  setLoading('dns-result', 'Looking up DNS...');
+  try {
+    const r = await fetch(`${HACKERTARGET}/dnslookup/?q=${encodeURIComponent(domain)}`);
+    const text = await r.text();
+    setResult('dns-result', `<pre class="result-text">${text.slice(0, 1500)}</pre>`, 'info');
+  } catch(e) { setError('dns-result', e.message); }
+}
+
+// ============================
+// PRIMBON — via Claude API
+// ============================
+async function primbonAI(prompt, resultId) {
+  setLoading(resultId, 'Memproses...');
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: 'Kamu adalah ahli primbon Jawa. Jawab dalam Bahasa Indonesia yang ramah dan menarik. Format jawaban singkat, padat, dan berikan bintang/emoji yang relevan. Selalu tambahkan disclaimer bahwa ini hanya untuk hiburan.',
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const d = await res.json();
+    const text = d.content?.[0]?.text || '';
+    if (!text) throw new Error('Gagal mendapatkan jawaban');
+    setResult(resultId, `<div style="white-space:pre-wrap;font-size:13px">${text}</div>`, 'info');
+  } catch(e) { setError(resultId, e.message); }
+}
+
+async function artiNama() {
+  const nama = document.getElementById('artinama-input').value.trim();
+  if (!nama) return setError('artinama-result', 'Masukkan nama dulu');
+  await primbonAI(`Jelaskan arti nama "${nama}" dalam perspektif primbon Jawa, budaya, dan bahasa. Sertakan karakteristik kepribadian yang biasa dimiliki orang dengan nama ini.`, 'artinama-result');
+}
+
+async function ramalanZodiak() {
+  const zodiak = document.getElementById('zodiak-select').value;
+  if (!zodiak) return setError('zodiak-result', 'Pilih zodiak dulu');
+  await primbonAI(`Berikan ramalan zodiak ${zodiak} untuk hari ini. Bahas aspek: cinta & hubungan, karir & keuangan, kesehatan, dan tips hari ini. Buat yang menarik dan positif.`, 'zodiak-result');
+}
+
+async function kecocokanNama() {
+  const n1 = document.getElementById('jodoh-nama1').value.trim();
+  const n2 = document.getElementById('jodoh-nama2').value.trim();
+  if (!n1 || !n2) return setError('jodoh-result', 'Isi kedua nama dulu');
+  await primbonAI(`Hitung kecocokan nama "${n1}" dan "${n2}" berdasarkan primbon Jawa. Berikan persentase kecocokan, analisis karakter masing-masing, dan kesimpulan hubungan mereka. Buat dengan gaya fun!`, 'jodoh-result');
+}
+
+async function tafsirMimpi() {
+  const mimpi = document.getElementById('mimpi-input').value.trim();
+  if (!mimpi) return setError('mimpi-result', 'Masukkan mimpimu dulu');
+  await primbonAI(`Tafsirkan mimpi tentang "${mimpi}" berdasarkan primbon Jawa. Berikan makna, pertanda baik/buruk, dan saran tindakan. Buat menarik dan informatif.`, 'mimpi-result');
+}
+
+async function nomorHoki() {
+  const nama = document.getElementById('hoki-nama').value.trim();
+  if (!nama) return setError('hoki-result', 'Masukkan nama dulu');
+  await primbonAI(`Berikan nomor hoki untuk nama "${nama}" berdasarkan primbon Jawa dan numerologi. Jelaskan makna angka-angka tersebut dan kapan terbaik digunakan.`, 'hoki-result');
+}
+
+async function sifatBisnis() {
+  const nama = document.getElementById('bisnis-nama').value.trim();
+  if (!nama) return setError('bisnis-result', 'Masukkan nama dulu');
+  await primbonAI(`Berdasarkan primbon Jawa, analisis sifat usaha bisnis yang cocok untuk orang bernama "${nama}". Sebutkan bidang bisnis terbaik, sifat bisnis mereka, dan tips sukses.`, 'bisnis-result');
+}
+
+// Drag & drop support
+['rmbg-drop'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('dragover', e => { e.preventDefault(); el.classList.add('dragover'); });
+  el.addEventListener('dragleave', () => el.classList.remove('dragover'));
+  el.addEventListener('drop', e => {
+    e.preventDefault();
+    el.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file && id === 'rmbg-drop') {
+      document.getElementById('rmbg-filename').textContent = file.name;
+      document.getElementById('rmbg-btn').disabled = false;
+      const reader = new FileReader();
+      reader.onload = ev => { rmbgFileData = ev.target.result; };
+      reader.readAsDataURL(file);
+    }
+  });
+});
+
+// Enter key support
+document.querySelectorAll('.tool-input').forEach(inp => {
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const btn = inp.closest('.tool-input-wrap')?.querySelector('.btn');
+      if (btn) btn.click();
+    }
+  });
+});
+</script>
 </body>
 </html>
