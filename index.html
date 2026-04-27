@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAYYZ TOOLS — Kumpulan Tools Gratis</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-jp">ツール集</span>
+        <span class="logo-en">BAYYZ<span class="logo-accent">TOOLS</span></span>
+      </div>
+      <p class="header-sub">Kumpulan tools gratis untuk semua 🌸</p>
+    </div>
+  </header>
+
+  <!-- Nav Pills -->
+  <nav class="nav-pills" id="navPills">
+    <button class="pill active" data-target="downloader">⬇ Downloader</button>
+    <button class="pill" data-target="enhancer">✨ Enhancer</button>
+    <button class="pill" data-target="ai-image">🎨 AI Image</button>
+    <button class="pill" data-target="tools">🛠 Tools</button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- ===== DOWNLOADER SECTION ===== -->
+    <section class="section active" id="downloader">
+      <h2 class="section-title">Downloader</h2>
+
+      <div class="card" id="card-mp4">
+        <div class="card-header" onclick="toggleCard('card-mp4')">
+          <div class="card-icon">🎬</div>
+          <div>
+            <div class="card-name">Video Downloader</div>
+            <div class="card-desc">Download MP4 HD 1080p dari semua medsos</div>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+        <div class="card-body">
+          <input class="input" type="text" id="mp4-url" placeholder="Paste link video (IG, TikTok, YouTube, dll)" />
+          <button class="btn" onclick="downloadMP4()">Download MP4</button>
+          <div class="result" id="mp4-result"></div>
+        </div>
+      </div>
+
+      <div class="card" id="card-mp3">
+        <div class="card-header" onclick="toggleCard('card-mp3')">
+          <div class="card-icon">🎵</div>
+          <div>
+            <div class="card-name">MP3 Downloader</div>
+            <div class="card-desc">Ambil audio dari video medsos</div>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+        <div class="card-body">
+          <input class="input" type="text" id="mp3-url" placeholder="Paste link video" />
+          <button class="btn" onclick="downloadMP3()">Download MP3</button>
+          <div class="result" id="mp3-result"></div>
+        </div>
+      </div>
+
+      <div class="card" id="card-hdphoto">
+        <div class="card-header" onclick="toggleCard('card-hdphoto')">
+          <div class="card-icon">🖼</div>
+          <div>
+            <div class="card-name">HD Photo Downloader</div>
+            <div class="card-desc">Download foto kualitas HD</div>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+        <div class="card-body">
+          <input class="input" type="text" id="hdphoto-url" placeholder="Paste link foto / postingan" />
+          <button class="btn" onclick="downloadHDPhoto()">Download Foto HD</button>
+          <div class="result" id="hdphoto-result"></div>
+        </div>
+      </div>
+
+      <div class="card" id="card-hdvideo">
+        <div class="card-header" onclick="toggleCard('card-hdvideo')">
+          <div class="card-icon">📽</div>
+          <div>
+            <div class="card-name">HD Video (up to 4K)</div>
+            <div class="card-desc">Download video resolusi tinggi, pilih FPS</div>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+        <div class="card-body">
+          <input class="input" type="text" id="hdvideo-url" placeholder="Paste link video" />
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="fps" value="30" checked /> 30 FPS</label>
+            <label class="radio-label"><input type="radio" name="fps" value="60" /> 60 FPS</label>
+          </div>
+          <button class="btn" onclick="downloadHDVideo()">Download HD Video</button>
+          <div class="result" id="hdvideo-result"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== ENHANCER SECTION ===== -->
+    <section class="section" id="enhancer">
+      <h2 class="section-title">Enhancer</h2>
+
+      <div class="card" id="card-rmbg">
+        <div class="card-header" onclick="toggleCard('card-rmbg')">
+          <div class="card-icon">🪄</div>
+          <div>
+            <div class="card-name">Remove Background</div>
+            <div class="card-desc">Hapus background foto otomatis</div>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+        <div class="card-body">
+          <div class="upload-area" id="rmbg-drop" onclick="document.getElementById('rmbg-file').click()">
+            <span id="rmbg-label">📁 Tap untuk pilih gambar</span>
+            <input type="file" id="rmbg-file" accept="image/*" style="display:none" onchange="onFileSelected(this,'rmbg-label'); removeBackground(this)" />
+          </div>
+          <div class="result" id="rmbg-result"></div>
+        </div>
+      </div>
+
+      <div class="card" id="card-ttstalk">
+        <div class="card-header" onclick="toggleCard('card-ttstalk')">
+          <div class="card-icon">🔍</div>
+          <div>
+            <div class="card-name">TikTok Stalk</div>
+            <div class="card-desc">Lihat info lengkap akun TikTok</div>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+        <div class="card-body">
+          <input class="input" type="text" id="ttstalk-user" placeholder="Username TikTok (tanpa @)" />
+          <button class="btn" onclick="tiktokStalk()">Stalk Sekarang</button>
+          <div class="result" id="ttstalk-result"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== AI IMAGE SECTION ===== -->
+    <section class="section" id="ai-image">
+      <h2 class="section-title">AI Image</h2>
+      <p class="section-sub">Upload foto, pilih style transformasi</p>
+
+      <div class="style-grid">
+        <button class="style-btn active" data-style="anime" onclick="selectStyle(this,'anime')">🌸 Anime</button>
+        <button class="style-btn" data-style="chibi" onclick="selectStyle(this,'chibi')">🐣 Chibi</button>
+        <button class="style-btn" data-style="figura" onclick="selectStyle(this,'figura')">🗿 Figura</button>
+        <button class="style-btn" data-style="blonde" onclick="selectStyle(this,'blonde')">👱 Blonde</button>
+        <button class="style-btn" data-style="hitam" onclick="selectStyle(this,'hitam')">🖤 Hitam</button>
+        <button class="style-btn" data-style="putih" onclick="selectStyle(this,'putih')">🤍 Putih</button>
+      </div>
+
+      <div class="figura-ver" id="figura-ver" style="display:none">
+        <span class="ver-label">Versi Figura:</span>
+        <button class="ver-btn active" data-ver="v1" onclick="selectFiguraVer(this,'v1')">V1</button>
+        <button class="ver-btn" data-ver="v2" onclick="selectFiguraVer(this,'v2')">V2</button>
+        <button class="ver-btn" data-ver="v3" onclick="selectFiguraVer(this,'v3')">V3</button>
+      </div>
+
+      <div class="upload-area" id="ai-drop" onclick="document.getElementById('ai-file').click()">
+        <span id="ai-label">📁 Tap untuk pilih gambar</span>
+        <input type="file" id="ai-file" accept="image/*" style="display:none" onchange="onFileSelected(this,'ai-label'); transformImage(this)" />
+      </div>
+      <div class="result" id="ai-result"></div>
+    </section>
+
+    <!-- ===== TOOLS SECTION ===== -->
+    <section class="section" id="tools">
+      <h2 class="section-title">Tools Lainnya</h2>
+
+      <div class="card" id="card-iqc">
+        <div class="card-header" onclick="toggleCard('card-iqc')">
+          <div class="card-icon">🧠</div>
+          <div>
+            <div class="card-name">IQC Generator</div>
+            <div class="card-desc">Generate IQ Card unik kamu</div>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+        <div class="card-body">
+          <input class="input" type="text" id="iqc-name" placeholder="Masukkan nama kamu" />
+          <button class="btn" onclick="generateIQC()">Generate IQ Card</button>
+          <div class="result" id="iqc-result"></div>
+        </div>
+      </div>
+
+      <div class="card" id="card-tts">
+        <div class="card-header" onclick="toggleCard('card-tts')">
+          <div class="card-icon">🔊</div>
+          <div>
+            <div class="card-name">Text to Speech</div>
+            <div class="card-desc">Ubah teks jadi suara (TTS lengkap)</div>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+        <div class="card-body">
+          <textarea class="input textarea" id="tts-text" placeholder="Ketik teks yang ingin diucapkan..." rows="3"></textarea>
+          <input class="input" type="text" id="tts-lang" placeholder="Bahasa (contoh: id, en, ja)" value="id" />
+          <button class="btn" onclick="generateTTS()">Generate Suara</button>
+          <div class="result" id="tts-result"></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>BAYYZ TOOLS — Gratis untuk semua 🌸</p>
+    <p class="footer-jp">無料ツール集 · by @bayyzofc1</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
