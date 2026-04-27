@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enhancer — BAYYZ TOOLS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-badge">BY</span>
+        <span class="logo-name">BAYYZ<span>TOOLS</span></span>
+      </a>
+      <a href="index.html" class="header-back">← Home</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-hero fade-in">
+      <div class="page-hero-tag">✨ Enhancer</div>
+      <h1>Enhance &amp; <span class="grad">explore</span><br/>lebih jauh.</h1>
+      <p>Remove background otomatis & intip info akun TikTok.</p>
+    </div>
+
+    <div class="tools-list">
+
+      <!-- Remove BG -->
+      <div class="tool-card fade-in" id="card-rmbg" style="--tool-grad: linear-gradient(135deg,#43e97b,#4facfe)">
+        <div class="tool-card-header" onclick="toggleCard('card-rmbg')">
+          <div class="tool-card-icon">🪄</div>
+          <div class="tool-card-info">
+            <div class="tool-card-name">Remove Background</div>
+            <div class="tool-card-desc">Hapus background foto otomatis dengan AI</div>
+          </div>
+          <span class="tool-card-arrow">›</span>
+        </div>
+        <div class="tool-card-body">
+          <div class="upload-area" onclick="document.getElementById('rmbg-file').click()">
+            <span id="rmbg-label">📁 Tap untuk pilih gambar</span>
+            <input type="file" id="rmbg-file" accept="image/*" style="display:none"
+              onchange="onFileSelected(this,'rmbg-label'); removeBackground(this)" />
+          </div>
+          <div class="result" id="rmbg-result"></div>
+        </div>
+      </div>
+
+      <!-- TikTok Stalk -->
+      <div class="tool-card fade-in" id="card-ttstalk" style="--tool-grad: linear-gradient(135deg,#f953c6,#7c5cfc)">
+        <div class="tool-card-header" onclick="toggleCard('card-ttstalk')">
+          <div class="tool-card-icon">🔍</div>
+          <div class="tool-card-info">
+            <div class="tool-card-name">TikTok Stalk</div>
+            <div class="tool-card-desc">Lihat info lengkap akun TikTok</div>
+          </div>
+          <span class="tool-card-arrow">›</span>
+        </div>
+        <div class="tool-card-body">
+          <input class="input" type="text" id="ttstalk-user" placeholder="Username TikTok (tanpa @)" />
+          <button class="btn" onclick="tiktokStalk()">🔍 Stalk Sekarang</button>
+          <div class="result" id="ttstalk-result"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>BAYYZ TOOLS · by <a href="https://t.me/bayyzofc1" target="_blank">@bayyzofc1</a></p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+  <script>
+    document.querySelectorAll('.tool-card').forEach((c,i) => {
+      c.style.animationDelay = (i * 0.08) + 's';
+    });
+  </script>
+</body>
+</html>

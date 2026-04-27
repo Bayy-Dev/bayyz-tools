@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools — BAYYZ TOOLS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-badge">BY</span>
+        <span class="logo-name">BAYYZ<span>TOOLS</span></span>
+      </a>
+      <a href="index.html" class="header-back">← Home</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-hero fade-in">
+      <div class="page-hero-tag">🛠 Tools</div>
+      <h1>Tools <span class="grad">serbaguna</span><br/>buat kamu.</h1>
+      <p>IQ Card generator & Text to Speech multi-bahasa.</p>
+    </div>
+
+    <div class="tools-list">
+
+      <!-- IQC Generator -->
+      <div class="tool-card fade-in" id="card-iqc" style="--tool-grad: linear-gradient(135deg,#f7971e,#fc5c7d)">
+        <div class="tool-card-header" onclick="toggleCard('card-iqc')">
+          <div class="tool-card-icon">🧠</div>
+          <div class="tool-card-info">
+            <div class="tool-card-name">IQC Generator</div>
+            <div class="tool-card-desc">Generate IQ Card unik kamu</div>
+          </div>
+          <span class="tool-card-arrow">›</span>
+        </div>
+        <div class="tool-card-body">
+          <input class="input" type="text" id="iqc-name" placeholder="Masukkan nama kamu" />
+          <button class="btn btn-warm" onclick="generateIQC()">🧠 Generate IQ Card</button>
+          <div class="result" id="iqc-result"></div>
+        </div>
+      </div>
+
+      <!-- TTS -->
+      <div class="tool-card fade-in" id="card-tts" style="--tool-grad: linear-gradient(135deg,#4facfe,#43e97b)">
+        <div class="tool-card-header" onclick="toggleCard('card-tts')">
+          <div class="tool-card-icon">🔊</div>
+          <div class="tool-card-info">
+            <div class="tool-card-name">Text to Speech</div>
+            <div class="tool-card-desc">Ubah teks jadi suara — support banyak bahasa</div>
+          </div>
+          <span class="tool-card-arrow">›</span>
+        </div>
+        <div class="tool-card-body">
+          <textarea class="input textarea" id="tts-text" placeholder="Ketik teks yang ingin diucapkan..." rows="3"></textarea>
+          <input class="input" type="text" id="tts-lang" placeholder="Kode bahasa (id, en, ja, dll)" value="id" />
+          <button class="btn btn-green" onclick="generateTTS()">🔊 Generate Suara</button>
+          <div class="result" id="tts-result"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>BAYYZ TOOLS · by <a href="https://t.me/bayyzofc1" target="_blank">@bayyzofc1</a></p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+  <script>
+    document.querySelectorAll('.tool-card').forEach((c,i) => {
+      c.style.animationDelay = (i * 0.08) + 's';
+    });
+  </script>
+</body>
+</html>
